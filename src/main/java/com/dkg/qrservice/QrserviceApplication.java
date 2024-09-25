@@ -1,8 +1,5 @@
 package com.dkg.qrservice;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import java.awt.image.BufferedImage;
 
 import org.springframework.http.HttpStatus;
@@ -36,11 +33,3 @@ class QrCodeController {
 
 }
 
-@SpringBootApplication
-public class QrserviceApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(QrserviceApplication.class, args);
-	}
-
-}
