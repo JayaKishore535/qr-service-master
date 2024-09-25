@@ -1,4 +1,8 @@
 package com.dkg.qrservice;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.awt.image.BufferedImage;
 
 import org.springframework.http.HttpStatus;
@@ -28,6 +32,15 @@ class QrCodeController {
 				barcodeWriter.encode(barcode, BarcodeFormat.QR_CODE, 200, 200);
 
 		return new ResponseEntity<>(MatrixToImageWriter.toBufferedImage(bitMatrix),HttpStatus.OK);
+	}
+
+}
+
+@SpringBootApplication
+public class QrserviceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(QrserviceApplication.class, args);
 	}
 
 }
