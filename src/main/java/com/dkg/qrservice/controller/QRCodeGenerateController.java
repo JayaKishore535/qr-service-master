@@ -3,7 +3,6 @@ package com.dkg.qrservice.controller;
 import com.dkg.qrservice.service.QRCodeGenerateService;
 import com.dkg.qrservice.util.DKG_WriterException;
 //import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -19,8 +18,11 @@ import java.util.Map;
 @RestController
 public class QRCodeGenerateController {
 
-    @Autowired
-    private QRCodeGenerateService qrCodeGenerateService;
+    private final QRCodeGenerateService qrCodeGenerateService;
+
+    public QRCodeGenerateController(QRCodeGenerateService qrCodeGenerateService) {
+        this.qrCodeGenerateService = qrCodeGenerateService;
+    }
 
     @GetMapping("/downloadQRCodeImage")
     public ResponseEntity<Resource> downloadQRCode(@RequestParam String inputString,
@@ -46,10 +48,9 @@ public class QRCodeGenerateController {
                                             @RequestParam int width, @RequestParam int height) throws IOException, DKG_WriterException {
 
         byte[] res = qrCodeGenerateService.getQRCodeImage(inputString, width, height);
-        ByteArrayResource resource = new ByteArrayResource(res);
 
 
-        return resource;
+        return new ByteArrayResource(res);
     }
 
 }
