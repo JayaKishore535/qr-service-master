@@ -2,7 +2,6 @@ package com.dkg.qrservice.controller;
 
 
 import java.awt.image.BufferedImage;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
